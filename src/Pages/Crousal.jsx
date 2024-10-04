@@ -20,9 +20,10 @@ const Crousal = ({moviedata}) => {
             <div>
                 <div className='relative h-[700px]'>
                 <img src={`https://image.tmdb.org/t/p/original${data.poster_path}`} alt="" className=' rounded-lg h-full'/>
-                <h1 className='text-white absolute bottom-[200px] text-[24px] left-4 font-semibold text-start max-w-[1000px]'>{data.overview}</h1>
-                <h1 className='absolute bottom-[150px] text-white text-[24px] left-4 font-semibold'>{data.release_date}</h1>
-                <h1  className='absolute bottom-[150px] text-white text-[24px] left-[200px] font-semibold'><i class="fa-solid fa-star"></i> {data.vote_average
+                <h1 className='absolute bottom-[350px] text-white text-[30px] left-20'>{data.title}</h1>
+                <h1 className='text-white absolute bottom-[200px] text-[16px] left-20 font-semibold text-start max-w-[1000px]'>{data.overview}</h1>
+                <h1 className='absolute bottom-[300px] text-white text-[24px] left-20 font-semibold'>{data.release_date}</h1>
+                <h1  className='absolute bottom-[300px] text-white text-[24px] left-[250px] font-semibold'><i class="fa-solid fa-star"></i> {data.vote_average
                 }</h1>
                 </div>
             </div>

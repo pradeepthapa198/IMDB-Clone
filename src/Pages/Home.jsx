@@ -1,23 +1,31 @@
 import React from 'react'
-import {Logo} from '../Utils/Logo'
+
+import { useState,useEffect } from 'react'
+import Navbar from './Navbar';
 
 const Home = () => {
+    const [moviedata,setmoviedata]=useState([]);
+useEffect(()=>{
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOWNiOTM3MjhlMWNmMjM5NDllMjY3ZDFiNTMzNTM4MSIsIm5iZiI6MTcyODAyMjc3OS4xNDAxMDQsInN1YiI6IjY2YmI0YzU0OGIwOWI5ODMwODA2MjE4NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.c1ne7HEvzvQQTuUjIoVAlevDEs1d9gLiSJvyhrP4sbs'
+        }
+      };
+      const fetchdata=async()=>{
+            const res =await  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+            const data =await res.json()
+            console.log(data.results)
+            setmoviedata(data.results)
+        }
+        fetchdata()
+  
+},[])
+
   return (
     <div className='h-full w-full bg-black'>
-        <nav className='h-[100px] max-w-[1400px] mx-auto flex justify-between items-center'>
-            <div className='text-[20px] font-semibold flex items-center gap-10 text-white '>
-            <img src={Logo} alt="" className='h-[50px] cursor-pointer'/> 
-            <h1 className='hover:text-red-600 duration-500'>Popular</h1>
-            <h1  className='hover:text-red-600 duration-500'>Top-Rated</h1>
-            <h1  className='hover:text-red-600 duration-500'>Upcoming</h1>
-            </div>
-
-            <button className='py-2 px-4 bg-white shadow-lg rounded-full'>
-            <i className="fa-solid fa-user text-[20px] "></i>
-            </button>
-
-
-        </nav>
+         <Navbar/>
        
     </div>
   )

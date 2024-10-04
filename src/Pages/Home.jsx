@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useState,useEffect } from 'react'
 import Navbar from './Navbar';
+import Crousal from './Crousal';
 
 const Home = () => {
     const [moviedata,setmoviedata]=useState([]);
@@ -26,6 +27,7 @@ useEffect(()=>{
   return (
     <div className='h-full w-full bg-black'>
          <Navbar/>
+         <Crousal moviedata={moviedata} />
        
     </div>
   )
